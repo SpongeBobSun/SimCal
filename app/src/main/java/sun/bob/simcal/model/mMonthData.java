@@ -151,6 +151,7 @@ public class mMonthData{
         if(day > totalDay){
             day = 1;
         }
+        day+=1;
         ArrayList ret = new ArrayList();
         for(int i = 0;i < (day - 1)%7;i++){
             ret.add(new mDateData(0));
@@ -172,4 +173,9 @@ public class mMonthData{
         }
         return todaytmp;
     }
+
+    public int getMonth() {
+        return month;
+    }
+
 }
