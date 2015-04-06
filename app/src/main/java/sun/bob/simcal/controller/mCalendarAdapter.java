@@ -22,11 +22,9 @@ import sun.bob.simcal.model.mTitleData;
 public class mCalendarAdapter extends ArrayAdapter<mDateData> {
     ArrayList<mDateData> dateDatas;
     private int cellSize;
-//    private mMonthData monthData;
     LinearLayout.LayoutParams cellParams;
     public mCalendarAdapter(Context context, int resource, ArrayList<mDateData> arrayList) {
         super(context, resource, arrayList);
-//        monthData = new mMonthData(context);
         dateDatas = arrayList;
         getDefaultcellSize();
         cellParams = new LinearLayout.LayoutParams(cellSize,cellSize);
@@ -35,6 +33,11 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
         DisplayMetrics dm;
         dm = getContext().getResources().getDisplayMetrics();
         cellSize = (dm.widthPixels-10) / 7;
+    }
+
+    @Override
+    public int getCount(){
+        return dateDatas.size();
     }
 
     @Override
@@ -77,8 +80,4 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
         return retView;
     }
 
-//    public mMonthData getMonthData() {
-//        return monthData;
-//    }
-//    public void setMonthData(mMonthData monthData){this.monthData = monthData;}
 }

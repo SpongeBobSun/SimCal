@@ -41,4 +41,5 @@ public class CalendarViewDown extends GridView {
     public mCalendarAdapter getCalendarAdapter(){
         return adapter;
     }
+    public mMonthData getMonthData(){return monthData;}
 }

@@ -32,11 +32,12 @@ public class CalendarViewUp extends GridView {
         monthData.markDay(day,getResources().getColor(markColor),markStyle);
         adapter.notifyDataSetChanged();
     }
-    public void setOnDateClickListener(OnItemClickListener clickListener){
-        this.setOnItemClickListener(clickListener);
-    }
+//    public void setOnDateClickListener(OnItemClickListener clickListener){
+//        this.setOnItemClickListener(clickListener);
+//    }
 
     public mCalendarAdapter getCalendarAdapter(){
         return adapter;
     }
+    public mMonthData getMonthData(){return monthData;}
 }
