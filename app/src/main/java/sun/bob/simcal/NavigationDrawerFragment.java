@@ -22,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import sun.bob.simcal.model.mDateData;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -248,7 +250,9 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            mDateData dateData = ((MainActivity)getActivity()).getCurrentSelectDate();
+            Toast.makeText(getActivity(),String.format("Selected date - %d",dateData.getDay()) , Toast.LENGTH_SHORT).show();
+
             return true;
         }
 

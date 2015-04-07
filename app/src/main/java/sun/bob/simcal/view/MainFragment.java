@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import sun.bob.simcal.R;
+import sun.bob.simcal.model.mDateData;
 
 /**
  * Created by sunkuan on 15/3/30.
@@ -66,4 +67,8 @@ public class MainFragment extends Fragment {
         });
         return retView;
     }
+    public mDateData getCurrentSelectDate(){
+        return calendarViewPager.getCurrentSelectDate();
+    }
+
 }
