@@ -18,12 +18,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.view.MainFragment;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
+    private MainFragment mainFragment;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -52,10 +53,11 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        MainFragment fragment = (MainFragment) fragmentManager.findFragmentById(R.id.container);
-        if(fragment == null){
+        mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.container);
+        if(mainFragment == null){
+            mainFragment = new MainFragment();
             fragmentManager.beginTransaction()
-                    .add(R.id.container,new MainFragment())
+                    .add(R.id.container,mainFragment)
                     .commit();
         }
     }
@@ -108,6 +110,10 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public mDateData getCurrentSelectDate(){
+        return mainFragment.getCurrentSelectDate();
     }
 
 //    /**

@@ -8,9 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.AttributeSet;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import sun.bob.simcal.R;
+import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.model.mMonthData;
 
 
@@ -42,11 +44,16 @@ public class mCalendarViewPager extends ViewPager {
 
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        Fragment fragments[];
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
+            fragments = new Fragment[1000];
         }
         @Override
         public Fragment getItem(int position) {
+            if(fragments[position] != null){
+                return fragments[position];
+            }
             int year = mMonthData.getCurrentYear();
             int month = mMonthData.getCurrentMonth();
             if(position > 500){
@@ -60,6 +67,7 @@ public class mCalendarViewPager extends ViewPager {
             mMonthData monthData = new mMonthData(getContext());
             monthData.changeMonth(year, month);
             fragment.setMonthData(monthData);
+            fragments[position] = fragment;
             return fragment;
         }
         @Override
@@ -107,6 +115,9 @@ public class mCalendarViewPager extends ViewPager {
         }
         return ret==0?12:ret;
     }
-
+    public mDateData getCurrentSelectDate(){
+        int index = this.getCurrentItem();
+        return ((mCalendarViewFragment)((ScreenSlidePagerAdapter)this.getAdapter()).getItem(index)).getCurrentSelectDate();
+    }
 
 }

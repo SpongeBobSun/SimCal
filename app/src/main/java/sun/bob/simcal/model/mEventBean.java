@@ -11,6 +11,7 @@ public class mEventBean {
     private int minute;
     private String title;
     private String detail;
+    private int _id;
 
     public int getYear() {
         return year;
@@ -66,5 +67,13 @@ public class mEventBean {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 }

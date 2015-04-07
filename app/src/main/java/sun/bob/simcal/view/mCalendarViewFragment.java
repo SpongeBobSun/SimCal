@@ -22,7 +22,7 @@ public class mCalendarViewFragment extends Fragment {
     private CalendarViewUp calendarViewUp;
     private CalendarViewDown calendarViewDown;
     private TimeListView timeListView;
-//    private ScrollView timeContainer;
+    private ScrollView timeContainer;
     private mMonthData monthData;
 
     public void onCreate(Bundle savedInstanceState){
@@ -35,23 +35,26 @@ public class mCalendarViewFragment extends Fragment {
         retView.setPadding(0, 0, 0, 0);
         retView.setWeightSum(1.0f);
         retView.setOrientation(LinearLayout.VERTICAL);
+        retView.setBackgroundResource(R.drawable.date_cell_border);
+
         calendarViewUp = new CalendarViewUp(getActivity());
         calendarViewUp.setPadding(0,0,0,0);
         calendarViewDown = new CalendarViewDown(getActivity());
         calendarViewDown.setPadding(0,0,0,0);
 
-//        timeContainer = new ScrollView(getActivity());
+        timeContainer = new ScrollView(getActivity());
         timeListView = new TimeListView(getActivity());
         timeListView.setPadding(0,0,0,0);
-//        timeContainer.addView(timeListView);
+        timeContainer.addView(timeListView);
+
 
         calendarViewUp.setMonthData(monthData);
         calendarViewDown.setMonthData(monthData);
-        LinearLayout.LayoutParams paramsUp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,0.3f);
+        LinearLayout.LayoutParams paramsUp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         retView.addView(calendarViewUp,0,paramsUp);
-        LinearLayout.LayoutParams paramsMiddle = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, calendarViewUp.getCalendarAdapter().getCellSize(),0.4f);
-        retView.addView(timeListView,1,paramsMiddle);
-        LinearLayout.LayoutParams paramsDown = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,0.3f);
+        LinearLayout.LayoutParams paramsMiddle = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,0,1f);
+        retView.addView(timeContainer,1,paramsMiddle);
+        LinearLayout.LayoutParams paramsDown = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         retView.addView(calendarViewDown,2,paramsDown);
         calendarViewUp.setSelector(R.drawable.selector_null);
         calendarViewDown.setSelector(R.drawable.selector_null);
@@ -94,5 +97,8 @@ public class mCalendarViewFragment extends Fragment {
                 calendarViewDown.setAdapter(adapterDown);
             }
         });
+    }
+    public mDateData getCurrentSelectDate(){
+        return calendarViewUp.getCurrentSelectDate();
     }
 }
