@@ -90,15 +90,4 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
     public int getCellSize() {
         return cellSize;
     }
-
-    public mDateData getLastValidDate() {
-        mDateData ret;
-        for(int i = dateDatas.size() - 1; i >= 0; i--){
-            ret = dateDatas.get(i);
-            if(ret.getDay() != 0){
-                return ret;
-            }
-        }
-        return dateDatas.get(dateDatas.size());
-    }
 }
