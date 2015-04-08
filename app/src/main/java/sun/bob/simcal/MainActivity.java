@@ -116,6 +116,10 @@ public class MainActivity extends ActionBarActivity
         return mainFragment.getCurrentSelectDate();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+    }
 //    /**
 //     * A placeholder fragment containing a simple view.
 //     */

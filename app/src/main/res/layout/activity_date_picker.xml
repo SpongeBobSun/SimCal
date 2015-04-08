@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_date_picker_widget"></DatePicker>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="10dp">
+        <Button
+            android:layout_width="0px"
+            android:layout_height="30dp"
+            android:layout_weight="1.0"
+            android:text="Ok"
+            android:textSize="20dp"
+            android:textColor="@color/lightblue"
+            android:background="@null"
+            android:id="@+id/id_date_picker_ok_button"/>
+        <Button
+            android:layout_width="0px"
+            android:layout_height="30dp"
+            android:layout_weight="1.0"
+            android:text="Cancle"
+            android:textSize="20dp"
+            android:textColor="@color/lightblue"
+            android:background="@null"
+            android:id="@+id/id_date_picker_cancle_button"/>
+    </LinearLayout>
+
+</LinearLayout>

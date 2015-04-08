@@ -22,6 +22,7 @@ public class mMonthData{
     private int year;
     private int month;
     private int lastMonth;
+    private static Calendar todayCalendar;
     public mMonthData(Context context){
         appContext = context;
 //        instance = this;
@@ -125,12 +126,70 @@ public class mMonthData{
         content.get(day + 7 + startDay - 1).mark(color,style);
     }
     public static int getCurrentYear(){
-        Calendar c = Calendar.getInstance();
-        return c.get(Calendar.YEAR);
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return todayCalendar.get(Calendar.YEAR);
     }
     public static int getCurrentMonth(){
-        Calendar c = Calendar.getInstance();
-        return c.get(Calendar.MONTH)+1;
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return todayCalendar.get(Calendar.MONTH)+1;
+    }
+    public static String getCurrentCCYY(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.YEAR));
+    }
+    public static String getCurrentMMDD(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d-%d",todayCalendar.get(Calendar.MONTH)+1,todayCalendar.get(Calendar.DAY_OF_MONTH));
+    }
+    public static String getCurrentMM(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.MONTH)+1);
+    }
+    public static String getCurrentDD(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.DAY_OF_MONTH));
+    }
+    public static String getCurrentHHMM(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d:%d",todayCalendar.get(Calendar.HOUR_OF_DAY),todayCalendar.get(Calendar.MINUTE));
+    }
+    public static String getCurrentHH(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.HOUR_OF_DAY));
+    }
+    public static String getDefaultEndHH(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.HOUR_OF_DAY)+2);
+    }
+    public static String getCurrentTT(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d",todayCalendar.get(Calendar.MINUTE));
+    }
+    public static String getDefaultEndHHMM(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return String.format("%d:%d",todayCalendar.get(Calendar.HOUR_OF_DAY)+2,todayCalendar.get(Calendar.MINUTE));
     }
     public ArrayList getArrayUp(int day){
         day+=startDay;
