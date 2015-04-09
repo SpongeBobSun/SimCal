@@ -8,10 +8,8 @@ import java.util.ArrayList;
  * Created by sunkuan on 15/4/6.
  */
 public class mTimeData {
-    private Context appContext;
     private ArrayList<mTimeContainer> content;
     public mTimeData(Context context){
-        appContext = context;
         content = new ArrayList<>();
         populateTimeLine();
     }

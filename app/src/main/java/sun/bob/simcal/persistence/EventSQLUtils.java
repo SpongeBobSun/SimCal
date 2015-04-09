@@ -110,7 +110,7 @@ public class EventSQLUtils {
         ArrayList<mEventBean> ret = new ArrayList<>();
 
         Cursor cursor = database.query("events",
-                                        new String[]{"_id","title","detail"},
+                                        new String[]{"_id","title","detail","hh","minute"},
                                         "ccyy=? and mm=? and dd=?",
                                         new String[]{String.valueOf(ccyy),
                                                      String.valueOf(mm),
@@ -137,7 +137,7 @@ public class EventSQLUtils {
         ArrayList<mEventBean> ret = new ArrayList<>();
 
         Cursor cursor = database.query("events",
-                new String[]{"_id","title","detail"},
+                new String[]{"_id","title","detail","hh","minute",},
                 "ccyy=? and mm=?",
                 new String[]{String.valueOf(ccyy),
                         String.valueOf(mm)},

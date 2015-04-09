@@ -46,9 +46,17 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
     public View getView(int position, View convertView, ViewGroup parent){
 //        ArrayList<mDateData> list = mMonthData.getInstance(getContext()).getArray();_
         ArrayList<mDateData> list = dateDatas;
-        View retView;
-        retView = ((Activity)getContext()).getLayoutInflater().inflate(R.layout.date_cell,null);
-        TextView textView = (TextView)retView.findViewById(R.id.id_date_cell_textview);
+        View retView = convertView;
+		ViewHolder holder;
+		if(retView == null){
+			retView = ((Activity)getContext()).getLayoutInflater().inflate(R.layout.date_cell,null);
+			holder = new ViewHolder();
+			retView.setTag(holder);
+            holder.cellTextView = (TextView)retView.findViewById(R.id.id_date_cell_textview);
+            holder.cellMarkBar = retView.findViewById(R.id.id_date_cell_mark_bar);
+		}else{
+			holder = (ViewHolder) retView.getTag();
+		}
         mDateData dateData = list.get(position);
 //        if(position < 7){
 //            textView.setText(((mTitleData)dateData).getTitle());
@@ -59,30 +67,29 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
 //            linearLayout.removeViewAt(1);
 //            return retView;
 //        }
-        textView.setWidth(cellSize);
-        textView.setHeight(cellSize);
+        holder.cellTextView.setWidth(cellSize);
+        holder.cellTextView.setHeight(cellSize);
         if(dateData.isBlank()){
             retView.setClickable(false);
-            textView.setText("");
+            holder.cellTextView.setText("");
             retView.setBackgroundResource(R.drawable.empty_cell_border);
             return retView;
         }
         if(dateData.getDay() == 0) {
-            textView.setText("");
+            holder.cellTextView.setText("");
         }else{
-            textView.setText(String.format("%d",dateData.getDay()));
+            holder.cellTextView.setText(String.format("%d",dateData.getDay()));
         }
         if(dateData.getTextSize() == 1) {
-            textView.setTextSize(cellSize / 3);
+            holder.cellTextView.setTextSize(cellSize / 3);
         }
         if(dateData.getTextSize() == 0){
-            textView.setTextSize(cellSize / 5);
-            textView.setLayoutParams(cellParams);
+            holder.cellTextView.setTextSize(cellSize / 5);
+            holder.cellTextView.setLayoutParams(cellParams);
         }
-        textView.setTextColor(dateData.getTextColor());
+        holder.cellTextView.setTextColor(dateData.getTextColor());
         if(dateData.isMarked()){
-            View view = retView.findViewById(R.id.id_date_cell_mark_bar);
-            view.setBackgroundColor(dateData.getMarkColor());
+            holder.cellMarkBar.setBackgroundColor(dateData.getMarkColor());
         }
         return retView;
     }
@@ -100,5 +107,9 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
             }
         }
         return dateDatas.get(dateDatas.size());
+    }
+    class ViewHolder{
+        public TextView cellTextView;
+        public View cellMarkBar;
     }
 }

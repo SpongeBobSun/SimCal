@@ -10,6 +10,7 @@ public class mDateData {
     private int MarkColor;
     private int MarkStyle;
     private int Month;
+    private int Year;
     private int textColor;
     private int textSize;
 
@@ -78,5 +79,13 @@ public class mDateData {
     }
     public int getMonth(){
         return this.Month;
+    }
+
+    public int getYear() {
+        return Year;
+    }
+
+    public void setYear(int year) {
+        Year = year;
     }
 }

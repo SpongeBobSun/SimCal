@@ -44,16 +44,16 @@ public class mCalendarViewPager extends ViewPager {
 
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        Fragment fragments[];
+//        Fragment fragments[];
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
-            fragments = new Fragment[1000];
+//            fragments = new Fragment[1000];
         }
         @Override
         public Fragment getItem(int position) {
-            if(fragments[position] != null){
-                return fragments[position];
-            }
+//            if(fragments[position] != null){
+//                return fragments[position];
+//            }
             int year = mMonthData.getCurrentYear();
             int month = mMonthData.getCurrentMonth();
             if(position > 500){
@@ -67,7 +67,7 @@ public class mCalendarViewPager extends ViewPager {
             mMonthData monthData = new mMonthData(getContext());
             monthData.changeMonth(year, month);
             fragment.setMonthData(monthData);
-            fragments[position] = fragment;
+//            fragments[position] = fragment;
             return fragment;
         }
         @Override

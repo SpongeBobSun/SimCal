@@ -7,11 +7,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
+import sun.bob.simcal.model.mEventBean;
 import sun.bob.simcal.model.mMonthData;
+import sun.bob.simcal.persistence.EventSQLUtils;
 import sun.bob.simcal.view.AddEventFragment;
 
 /**
@@ -30,14 +33,14 @@ public class AddEventActivity extends ActionBarActivity {
     private String endTT;
     private String title;
     private String detail;
-
+    AddEventFragment addEventFragment;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_event);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FragmentManager fm = this.getSupportFragmentManager();
-        AddEventFragment addEventFragment = (AddEventFragment) fm.findFragmentById(R.id.id_add_event_fragment_container);
+        addEventFragment = (AddEventFragment) fm.findFragmentById(R.id.id_add_event_fragment_container);
         if(addEventFragment == null){
             addEventFragment = new AddEventFragment();
             fm.beginTransaction()
@@ -54,10 +57,10 @@ public class AddEventActivity extends ActionBarActivity {
         startHH = mMonthData.getCurrentHH();
         startTT = mMonthData.getCurrentTT();
         endCCYY = startCCYY;
-        startMM = mMonthData.getCurrentMM();
-        startDD = mMonthData.getCurrentDD();
-        startHH = mMonthData.getDefaultEndHH();
-        startTT = mMonthData.getCurrentTT();
+        endMM = mMonthData.getCurrentMM();
+        endDD = mMonthData.getCurrentDD();
+        endHH = mMonthData.getDefaultEndHH();
+        endTT = mMonthData.getCurrentTT();
         title = "untitled event";
 //        detail = "Untitled event occurs on" + startCCYY+" "+startMMDD+" "+startHHMM;
 
@@ -113,9 +116,27 @@ public class AddEventActivity extends ActionBarActivity {
         }
         return;
     }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        Log.e("SimCal - ",startCCYY+startMM+startDD+startHH+startTT);
+//        return true;
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.e("SimCal - ",startCCYY+startMM+startDD+startHH+startTT);
-        return true;
+        if (item.getItemId() == R.id.action_add_event) {
+            title = ((EditText) findViewById(R.id.id_edit_text_event_title)).getText().toString();
+            EventSQLUtils sqlUtils = EventSQLUtils.getStaticInstance(this);
+            mEventBean eventBean = new mEventBean();
+            eventBean.setYear(Integer.valueOf(startCCYY));
+            eventBean.setMonth(Integer.valueOf(startMM));
+            eventBean.setDay(Integer.valueOf(startDD));
+            eventBean.setHour(Integer.valueOf(startHH));
+            eventBean.setMinute(Integer.valueOf(startTT));
+            eventBean.setTitle(title);
+            sqlUtils.addEvent(eventBean);
+            finish();
+            return true;
+        }
+        return false;
     }
 }

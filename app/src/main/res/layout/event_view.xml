@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="50dp"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/date_cell_border">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_text_view_event_title"
+        android:background="@color/link_text_material_light"
+        android:textStyle="bold"
+        android:text="Event Title"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_text_view_event_time"
+        android:textStyle="italic"
+        android:text="9:00"/>
+</LinearLayout>

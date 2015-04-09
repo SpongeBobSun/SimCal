@@ -1,6 +1,10 @@
 package sun.bob.simcal.model;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,8 +15,6 @@ import sun.bob.simcal.R;
  * Created by sunkuan on 15/3/17.
  */
 public class mMonthData{
-    private static Context appContext;
-//    private static mMonthData instance;
     private ArrayList<mDateData> content;
     private Calendar calendar;
     private int totalDay;
@@ -24,23 +26,16 @@ public class mMonthData{
     private int lastMonth;
     private static Calendar todayCalendar;
     public mMonthData(Context context){
-        appContext = context;
-//        instance = this;
+//        appContext = context;
         content = new ArrayList<mDateData>();
         initCalendar();
     }
-//    public static mMonthData getInstance(Context context){
-//        if(appContext == null){
-//            instance =  new mMonthData(context);
-//        }
-//        return instance;
-//    }
     private void initCalendar(){
         calendar = Calendar.getInstance();
         totalDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         today = calendar.get(Calendar.DAY_OF_MONTH);
         year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
+        month = calendar.get(Calendar.MONTH)+1;
         Calendar tmpCal = Calendar.getInstance();
         tmpCal.clear();
         tmpCal.set(year, month, 1);
@@ -54,7 +49,6 @@ public class mMonthData{
             tmpCal.set(year-1,11,1);
         }
         lastMonthTotalDay = tmpCal.get(Calendar.DAY_OF_MONTH);
-//        initArray();
     }
     private void initArray(){
         for (int i = 0;i < 7;i++){
@@ -65,7 +59,7 @@ public class mMonthData{
             if(i < startDay) {
                 addDate = new mDateData(lastMonthTotalDay - (startDay- i)+1);
                 addDate.setMonth(lastMonth);
-                addDate.setTextColor(appContext.getResources().getColor(R.color.lightgray));
+                addDate.setTextColor(Color.LTGRAY);
                 addDate.setTextSize(0);
                 content.add(addDate);
                 continue;
@@ -73,7 +67,7 @@ public class mMonthData{
             if((i >= totalDay) && (i % 7 !=0)){
                 addDate = new mDateData((i - totalDay )+1);
                 addDate.setMonth(month+1);
-                addDate.setTextColor(appContext.getResources().getColor(R.color.lightgray));
+                addDate.setTextColor(Color.LTGRAY);
                 addDate.setTextSize(0);
                 content.add(addDate);
                 continue;
@@ -81,8 +75,9 @@ public class mMonthData{
                 return;
             }
             addDate = new mDateData(i + 1 - startDay);
+            addDate.setYear(year);
             addDate.setMonth(month);
-            addDate.setTextColor(appContext.getResources().getColor(R.color.black));
+            addDate.setTextColor(Color.BLACK);
             addDate.setTextSize(1);
             content.add(addDate);
         }
@@ -224,7 +219,7 @@ public class mMonthData{
         int todaytmp;
         Calendar c = Calendar.getInstance();
         todaytmp = c.get(Calendar.DAY_OF_MONTH);
-        if(this.month == c.get(Calendar.MONTH)){
+        if(this.month == c.get(Calendar.MONTH)+1){
             return todaytmp;
         }
         if(todaytmp > this.totalDay){
@@ -237,4 +232,7 @@ public class mMonthData{
         return month;
     }
 
+    public int getYear() {
+        return year;
+    }
 }

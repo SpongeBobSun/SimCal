@@ -1,5 +1,6 @@
 package sun.bob.simcal.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class mCalendarViewFragment extends Fragment {
 
         calendarViewUp.setMonthData(monthData);
         calendarViewDown.setMonthData(monthData);
+        timeListView.loadEvent(monthData.getYear(),monthData.getMonth(),monthData.getCenterDay());
         LinearLayout.LayoutParams paramsUp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         retView.addView(calendarViewUp,0,paramsUp);
         LinearLayout.LayoutParams paramsMiddle = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,0,1f);
@@ -74,6 +76,14 @@ public class mCalendarViewFragment extends Fragment {
                     return;
                 }
                 int day = dateData.getDay();
+                int month = dateData.getMonth()+1;
+                int year = dateData.getYear();
+
+                Intent intent = new Intent("intent_date_cell_click");
+                intent.putExtra("CCYY",year);
+                intent.putExtra("MM",month);
+                intent.putExtra("DD",day);
+                getActivity().sendBroadcast(intent);
 
                 mCalendarAdapter adapterUp = new mCalendarAdapter(getActivity(),android.R.layout.simple_list_item_1,monthData.getArrayUp(day));
                 calendarViewUp.setAdapter(adapterUp);
@@ -91,6 +101,15 @@ public class mCalendarViewFragment extends Fragment {
                     return;
                 }
                 int day = dateData.getDay();
+                int month = dateData.getMonth()+1;
+                int year = dateData.getYear();
+
+                Intent intent = new Intent("intent_date_cell_click");
+                intent.putExtra("CCYY",year);
+                intent.putExtra("MM",month);
+                intent.putExtra("DD",day);
+                getActivity().sendBroadcast(intent);
+
                 mCalendarAdapter adapterUp = new mCalendarAdapter(getActivity(),android.R.layout.simple_list_item_1,monthData.getArrayUp(day));
                 calendarViewUp.setAdapter(adapterUp);
                 mCalendarAdapter adapterDown = new mCalendarAdapter(getActivity(),android.R.layout.simple_list_item_1,monthData.getArrayDown(day));

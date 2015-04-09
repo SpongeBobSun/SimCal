@@ -11,7 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import sun.bob.simcal.R;
+import sun.bob.simcal.model.mEventBean;
 import sun.bob.simcal.model.mMonthData;
+import sun.bob.simcal.persistence.EventSQLUtils;
 
 /**
  * Created by sunkuan on 2015/4/8.
@@ -40,14 +42,6 @@ public class AddEventFragment extends Fragment {
         initListener(ret);
 
         return ret;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_add_event) {
-
-            return true;
-        }
-        return false;
     }
     public void initListener(View v){
         LinearLayout startContainer = (LinearLayout) v.findViewById(R.id.id_start_selector_container);
