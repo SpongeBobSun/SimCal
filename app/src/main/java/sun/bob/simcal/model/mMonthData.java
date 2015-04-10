@@ -35,7 +35,7 @@ public class mMonthData{
         totalDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         today = calendar.get(Calendar.DAY_OF_MONTH);
         year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH)+1;
+        month = calendar.get(Calendar.MONTH);
         Calendar tmpCal = Calendar.getInstance();
         tmpCal.clear();
         tmpCal.set(year, month, 1);

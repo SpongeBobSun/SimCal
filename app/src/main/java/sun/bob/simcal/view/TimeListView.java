@@ -49,6 +49,7 @@ public class TimeListView extends LinearLayout {
     private int currentCCYY;
     private int currentMM;
     private int currentDD;
+
     public TimeListView(Context context) {
         super(context);
         this.setOrientation(LinearLayout.VERTICAL);
@@ -61,11 +62,11 @@ public class TimeListView extends LinearLayout {
             this.addView(view);
         }
 
-        currentCCYY = mMonthData.getCurrentYear();
-        currentMM = mMonthData.getCurrentMonth();
-        currentDD = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+1;
+//        currentCCYY = mMonthData.getCurrentYear();
+//        currentMM = mMonthData.getCurrentMonth();
+//        currentDD = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+1;
         registerBroadcastReceiver();
-        loadFromSQL();
+
     }
 
     public void addEvent(mEventBean eventBean){
@@ -85,11 +86,22 @@ public class TimeListView extends LinearLayout {
         LinearLayout linearLayout;
         LinearLayout addItem;
         int indexhour;
+        View eventView;
+        boolean addFlag = true;
+        clearEvnets();
         while(i.hasNext()){
             eventBean = (mEventBean) i.next();
             indexhour = eventBean.getHour();
             linearLayout = (LinearLayout) this.getChildAt(indexhour).findViewById(R.id.id_event_container);
-            if(linearLayout.getChildCount() == eventsOfDay.size()){
+            for(int count = 0; count < linearLayout.getChildCount();count++){
+                eventView = linearLayout.getChildAt(count);
+                if((eventView.getTag()).equals(String.valueOf(eventBean.get_id()))){
+                    addFlag = false;
+                    break;
+                }
+                addFlag = true;
+            }
+            if(!addFlag){
                 continue;
             }
             /**
@@ -104,6 +116,7 @@ public class TimeListView extends LinearLayout {
             TextView time = (TextView) addItem.findViewById(R.id.id_text_view_event_time);
             time.setText(String.format("%d:%d", eventBean.getHour(), eventBean.getMinute()));
             linearLayout.addView(addItem);
+            addItem.setTag(String.valueOf(eventBean.get_id()));
         }
 
     }
@@ -113,10 +126,11 @@ public class TimeListView extends LinearLayout {
         currentDD = day;
         loadFromSQL();
     }
-    public void changeDate(int CCYY,int MM,int DD){
-
+    public void setMonthData(mMonthData data){
+        currentCCYY = data.getYear();
+        currentMM = data.getMonth();
+        currentDD = data.getCenterDay();
     }
-    public void setmMonthData(mMonthData data){monthData = data;}
 
     private void registerBroadcastReceiver(){
         IntentFilter intentFilter = new IntentFilter();
@@ -133,5 +147,20 @@ public class TimeListView extends LinearLayout {
             }
         }
         ,intentFilter);
+    }
+    private void clearEvnets(){
+        LinearLayout linearLayout;
+        for(int i = 0; i < 23; i++){
+            linearLayout = (LinearLayout) this.getChildAt(i).findViewById(R.id.id_event_container);
+            linearLayout.removeAllViews();
+        }
+    }
+    class EventOnClickListener implements OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            int eventId = Integer.getInteger((String)view.getTag());
+            EventSQLUtils.getStaticInstance(getContext()).getEventById(eventId);
+        }
     }
 }

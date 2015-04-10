@@ -46,6 +46,7 @@ public class mCalendarViewFragment extends Fragment {
         timeContainer = new ScrollView(getActivity());
         timeListView = new TimeListView(getActivity());
         timeListView.setPadding(0,0,0,0);
+        timeListView.setMonthData(monthData);
         timeContainer.addView(timeListView);
 
 

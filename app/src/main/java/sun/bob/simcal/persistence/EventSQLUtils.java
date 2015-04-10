@@ -158,5 +158,26 @@ public class EventSQLUtils {
         closeSQL();
         return ret;
     }
-
+    public mEventBean getEventById(int id){
+        mEventBean ret = new mEventBean();
+        openSQL();
+        Cursor cursor = database.query("events",
+                                       new String[]{"title","detail","hh","minute","ccyy","mm","dd"}
+                                        ,null,null,null,null,null);
+        if(cursor.getCount() == 0){
+            return null;
+        }
+        while(cursor.moveToNext()){
+            ret.set_id(cursor.getInt(cursor.getColumnIndex("_id")));
+            ret.setDay(cursor.getInt(cursor.getColumnIndex("dd")));
+            ret.setMonth(cursor.getInt(cursor.getColumnIndex("mm")));
+            ret.setYear(cursor.getInt(cursor.getColumnIndex("ccyy")));
+            ret.setHour(cursor.getInt(cursor.getColumnIndex("hh")));
+            ret.setMinute(cursor.getInt(cursor.getColumnIndex("minute")));
+            ret.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+            ret.setDetail(cursor.getString(cursor.getColumnIndex("detail")));
+        }
+        closeSQL();
+        return ret;
+    }
 }
