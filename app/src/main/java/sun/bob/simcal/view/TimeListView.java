@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Canvas;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -118,6 +119,7 @@ public class TimeListView extends LinearLayout {
             linearLayout.addView(addItem);
             addItem.setTag(String.valueOf(eventBean.get_id()));
         }
+        this.invalidate();
 
     }
     public void loadEvent(int year, int month, int day){
@@ -140,7 +142,10 @@ public class TimeListView extends LinearLayout {
             public void onReceive(Context context, Intent intent) {
                 if(intent.getAction().equals("intent_date_cell_click")){
                     currentCCYY = intent.getIntExtra("CCYY",-1);
-                    currentMM = intent.getIntExtra("MM",-1);
+                    int tmpMM = intent.getIntExtra("MM",-1);
+                    if(tmpMM != currentMM){
+                        return;
+                    }
                     currentDD = intent.getIntExtra("DD",-1);
                     loadFromSQL();
                 }
@@ -163,4 +168,5 @@ public class TimeListView extends LinearLayout {
             EventSQLUtils.getStaticInstance(getContext()).getEventById(eventId);
         }
     }
+
 }
