@@ -122,13 +122,13 @@ public class TimeListView extends LinearLayout {
     }
     public void loadEvent(int year, int month, int day){
         currentCCYY = year;
-        currentMM = month;
+        currentMM = month+1;
         currentDD = day;
         loadFromSQL();
     }
     public void setMonthData(mMonthData data){
         currentCCYY = data.getYear();
-        currentMM = data.getMonth();
+        currentMM = data.getMonth()+1;
         currentDD = data.getCenterDay();
     }
 
