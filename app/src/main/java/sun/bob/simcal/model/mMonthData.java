@@ -186,6 +186,12 @@ public class mMonthData{
         }
         return String.format("%d:%d",todayCalendar.get(Calendar.HOUR_OF_DAY)+2,todayCalendar.get(Calendar.MINUTE));
     }
+    public static int getCurrentTime(){
+        if(todayCalendar == null){
+            todayCalendar = Calendar.getInstance();
+        }
+        return todayCalendar.get(Calendar.HOUR_OF_DAY);
+    }
     public ArrayList getArrayUp(int day){
         day+=startDay;
         if(day > totalDay){

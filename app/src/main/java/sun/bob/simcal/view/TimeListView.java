@@ -12,12 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 
+import sun.bob.simcal.EditEventActivity;
 import sun.bob.simcal.R;
 import sun.bob.simcal.model.mEventBean;
 import sun.bob.simcal.model.mMonthData;
@@ -50,7 +52,7 @@ public class TimeListView extends LinearLayout {
     private int currentCCYY;
     private int currentMM;
     private int currentDD;
-
+    private ScrollView container;
     public TimeListView(Context context) {
         super(context);
         this.setOrientation(LinearLayout.VERTICAL);
@@ -63,9 +65,6 @@ public class TimeListView extends LinearLayout {
             this.addView(view);
         }
 
-//        currentCCYY = mMonthData.getCurrentYear();
-//        currentMM = mMonthData.getCurrentMonth();
-//        currentDD = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+1;
         registerBroadcastReceiver();
 
     }
@@ -116,10 +115,11 @@ public class TimeListView extends LinearLayout {
             titile.setText(eventBean.getTitle());
             TextView time = (TextView) addItem.findViewById(R.id.id_text_view_event_time);
             time.setText(String.format("%d:%d", eventBean.getHour(), eventBean.getMinute()));
+            addItem.setOnClickListener(new EventOnClickListener());
             linearLayout.addView(addItem);
             addItem.setTag(String.valueOf(eventBean.get_id()));
         }
-        this.invalidate();
+//        this.invalidate();
 
     }
     public void loadEvent(int year, int month, int day){
@@ -164,9 +164,21 @@ public class TimeListView extends LinearLayout {
 
         @Override
         public void onClick(View view) {
-            int eventId = Integer.getInteger((String)view.getTag());
+            int eventId = Integer.valueOf((String)view.getTag());
             EventSQLUtils.getStaticInstance(getContext()).getEventById(eventId);
+            Intent intent = new Intent(getContext(), EditEventActivity.class);
+            ((Activity)getContext()).startActivityForResult(intent,0);
         }
     }
 
+    public void setContainer(ScrollView container) {
+        this.container = container;
+    }
+
+    @Override
+    public void onLayout(boolean changed,int l,int t,int r,int b){
+        super.onLayout(changed,l,t,r,b);
+        int yPosition = (int) ((mMonthData.getCurrentTime()/24f)*(b-t));
+        container.scrollTo(0, yPosition);
+    }
 }

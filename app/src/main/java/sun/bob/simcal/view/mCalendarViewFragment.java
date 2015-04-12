@@ -48,7 +48,7 @@ public class mCalendarViewFragment extends Fragment {
         timeListView.setPadding(0,0,0,0);
         timeListView.setMonthData(monthData);
         timeContainer.addView(timeListView);
-
+        timeListView.setContainer(timeContainer);
 
         calendarViewUp.setMonthData(monthData);
         calendarViewDown.setMonthData(monthData);
@@ -57,10 +57,12 @@ public class mCalendarViewFragment extends Fragment {
         retView.addView(calendarViewUp,0,paramsUp);
         LinearLayout.LayoutParams paramsMiddle = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,0,1f);
         retView.addView(timeContainer,1,paramsMiddle);
+
         LinearLayout.LayoutParams paramsDown = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         retView.addView(calendarViewDown,2,paramsDown);
         calendarViewUp.setSelector(R.drawable.selector_null);
         calendarViewDown.setSelector(R.drawable.selector_null);
+
         initListeners();
         return retView;
     }
@@ -121,4 +123,5 @@ public class mCalendarViewFragment extends Fragment {
     public mDateData getCurrentSelectDate(){
         return calendarViewUp.getCurrentSelectDate();
     }
+
 }

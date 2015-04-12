@@ -162,7 +162,7 @@ public class EventSQLUtils {
         mEventBean ret = new mEventBean();
         openSQL();
         Cursor cursor = database.query("events",
-                                       new String[]{"title","detail","hh","minute","ccyy","mm","dd"}
+                                       new String[]{"_id","title","detail","hh","minute","ccyy","mm","dd"}
                                         ,null,null,null,null,null);
         if(cursor.getCount() == 0){
             return null;
