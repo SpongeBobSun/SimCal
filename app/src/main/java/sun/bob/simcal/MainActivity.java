@@ -20,11 +20,15 @@ import android.widget.TextView;
 
 import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.view.MainFragment;
+import sun.bob.simcal.view.TodayFragment;
+import sun.bob.simcal.view.TodoFragment;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private MainFragment mainFragment;
+    private TodayFragment todayFragment;
+    private TodoFragment todoFragment;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -53,13 +57,33 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.container);
-        if(mainFragment == null){
-            mainFragment = new MainFragment();
-            fragmentManager.beginTransaction()
-                    .add(R.id.container,mainFragment)
-                    .commit();
-        }
+//        if(position == 0){
+            mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.container);
+            if(mainFragment == null){
+                mainFragment = new MainFragment();
+                fragmentManager.beginTransaction()
+                        .add(R.id.container, mainFragment)
+                        .commit();
+//            }else{
+//                fragmentManager.beginTransaction().replace(R.id.container,mainFragment).commit();
+            }
+//        }else if(position == 1){
+//            todayFragment = (TodayFragment) fragmentManager.findFragmentById(R.id.id_today_container);
+//            if(todayFragment == null){
+//                todayFragment = new TodayFragment();
+//                fragmentManager.beginTransaction().add(R.id.container,todayFragment).commit();
+//            }else{
+//                fragmentManager.beginTransaction().replace(R.id.id_todo_container,todayFragment).commit();
+//            }
+//        }else if(position == 2){
+//            todoFragment = (TodoFragment) fragmentManager.findFragmentById(R.id.container);
+//            if(todoFragment == null){
+//                todoFragment = new TodoFragment();
+//                fragmentManager.beginTransaction().add(R.id.container,todoFragment).commit();
+//            }else{
+//                fragmentManager.beginTransaction().replace(R.id.container,todoFragment).commit();
+//            }
+//        }
     }
 
     public void onSectionAttached(int number) {

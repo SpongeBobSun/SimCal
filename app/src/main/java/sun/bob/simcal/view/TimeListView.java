@@ -165,8 +165,18 @@ public class TimeListView extends LinearLayout {
         @Override
         public void onClick(View view) {
             int eventId = Integer.valueOf((String)view.getTag());
-            EventSQLUtils.getStaticInstance(getContext()).getEventById(eventId);
+            mEventBean eventBean = EventSQLUtils.getStaticInstance(getContext()).getEventById(eventId);
             Intent intent = new Intent(getContext(), EditEventActivity.class);
+            intent.putExtra("eventID",eventId);
+            intent.putExtra("startCCYY",eventBean.getYear());
+            intent.putExtra("startMM",eventBean.getMonth());
+            intent.putExtra("startDD",eventBean.getDay());
+            intent.putExtra("startHH",eventBean.getHour());
+            intent.putExtra("startTT",eventBean.getMinute());
+            intent.putExtra("title",eventBean.getTitle());
+            if(eventBean.getDetail() != null){
+                intent.putExtra("detail",eventBean.getDetail());
+            }
             ((Activity)getContext()).startActivityForResult(intent,0);
         }
     }

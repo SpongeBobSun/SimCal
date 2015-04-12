@@ -102,7 +102,7 @@ public class EventSQLUtils {
         values.put("minute",eventBean.getMinute());
         values.put("title",eventBean.getTitle());
         values.put("detail",eventBean.getDetail());
-        database.update("event",values,"id=?",new String[]{String.valueOf(eventBean.get_id())});
+        database.update("events",values,"_id=?",new String[]{String.valueOf(eventBean.get_id())});
         closeSQL();
     }
     public ArrayList<mEventBean> getDayEvent(int ccyy,int mm,int dd){
