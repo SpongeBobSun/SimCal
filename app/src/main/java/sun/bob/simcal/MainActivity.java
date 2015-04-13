@@ -1,22 +1,12 @@
 package sun.bob.simcal;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.view.MainFragment;
@@ -48,42 +38,44 @@ public class MainActivity extends ActionBarActivity
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
+//        initFragments();
+
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
+    private void initFragments(){
+        FragmentManager fm = getSupportFragmentManager();
+        mainFragment = new MainFragment();
+        todayFragment = new TodayFragment();
+        todoFragment = new TodoFragment();
+        fm.beginTransaction().add(R.id.container,mainFragment,"mainFragment").commit();
+        fm.beginTransaction().add(R.id.container,todayFragment,"todayFragment").commit();
+        fm.beginTransaction().add(R.id.container,todoFragment,"todoFragment").commit();
+        fm.beginTransaction().hide(todayFragment).commit();
+        fm.beginTransaction().hide(todoFragment).commit();
+    }
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        if(mainFragment == null | todayFragment == null | todoFragment == null){
+            initFragments();
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
-//        if(position == 0){
-            mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.container);
-            if(mainFragment == null){
-                mainFragment = new MainFragment();
-                fragmentManager.beginTransaction()
-                        .add(R.id.container, mainFragment)
-                        .commit();
-//            }else{
-//                fragmentManager.beginTransaction().replace(R.id.container,mainFragment).commit();
-            }
-//        }else if(position == 1){
-//            todayFragment = (TodayFragment) fragmentManager.findFragmentById(R.id.id_today_container);
-//            if(todayFragment == null){
-//                todayFragment = new TodayFragment();
-//                fragmentManager.beginTransaction().add(R.id.container,todayFragment).commit();
-//            }else{
-//                fragmentManager.beginTransaction().replace(R.id.id_todo_container,todayFragment).commit();
-//            }
-//        }else if(position == 2){
-//            todoFragment = (TodoFragment) fragmentManager.findFragmentById(R.id.container);
-//            if(todoFragment == null){
-//                todoFragment = new TodoFragment();
-//                fragmentManager.beginTransaction().add(R.id.container,todoFragment).commit();
-//            }else{
-//                fragmentManager.beginTransaction().replace(R.id.container,todoFragment).commit();
-//            }
-//        }
+        switch (position){
+            case 0:
+                fragmentManager.beginTransaction().show(mainFragment).hide(todayFragment).hide(todoFragment).commit();
+                break;
+            case 1:
+                fragmentManager.beginTransaction().show(todayFragment).hide(mainFragment).hide(todoFragment).commit();
+                break;
+            case 2:
+                fragmentManager.beginTransaction().show(todoFragment).hide(mainFragment).hide(todayFragment).commit();
+                break;
+            default:
+                break;
+        }
     }
 
     public void onSectionAttached(int number) {
