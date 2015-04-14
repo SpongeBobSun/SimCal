@@ -58,7 +58,6 @@ public class EditEventActivity extends AddEventActivity {
                 if(resultCode == 0){
                     if(data == null)
                         return;
-//                        Toast.makeText(this,data.getStringExtra("date")+" --- "+data.getStringExtra("time"),Toast.LENGTH_LONG).show();
                     startCCYY = data.getStringExtra("CCYY");
                     startMM = data.getStringExtra("MM");
                     startDD = data.getStringExtra("DD");
@@ -72,7 +71,6 @@ public class EditEventActivity extends AddEventActivity {
                 if(resultCode == 0){
                     if(data == null)
                         return;
-//                    Toast.makeText(this,data.getStringExtra("date")+" --- "+data.getStringExtra("time"),Toast.LENGTH_LONG).show();
                     endCCYY = data.getStringExtra("CCYY");
                     endMM = data.getStringExtra("MM");
                     endDD = data.getStringExtra("DD");

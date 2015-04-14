@@ -2,21 +2,17 @@ package sun.bob.simcal.controller;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import sun.bob.simcal.R;
 import sun.bob.simcal.model.mDateData;
-import sun.bob.simcal.model.mMonthData;
-import sun.bob.simcal.model.mTitleData;
 
 /**
  * Created by sunkuan on 15/3/17.

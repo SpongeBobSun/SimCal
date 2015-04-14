@@ -87,7 +87,6 @@ public class AddEventActivity extends ActionBarActivity {
                     if(resultCode == 0){
                         if(data == null)
                             return;
-//                        Toast.makeText(this,data.getStringExtra("date")+" --- "+data.getStringExtra("time"),Toast.LENGTH_LONG).show();
                         startCCYY = data.getStringExtra("CCYY");
                         startMM = data.getStringExtra("MM");
                         startDD = data.getStringExtra("DD");
@@ -101,7 +100,6 @@ public class AddEventActivity extends ActionBarActivity {
                 if(resultCode == 0){
                     if(data == null)
                         return;
-//                    Toast.makeText(this,data.getStringExtra("date")+" --- "+data.getStringExtra("time"),Toast.LENGTH_LONG).show();
                     endCCYY = data.getStringExtra("CCYY");
                     endMM = data.getStringExtra("MM");
                     endDD = data.getStringExtra("DD");
@@ -116,11 +114,6 @@ public class AddEventActivity extends ActionBarActivity {
         }
         return;
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        Log.e("SimCal - ",startCCYY+startMM+startDD+startHH+startTT);
-//        return true;
-//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_event) {

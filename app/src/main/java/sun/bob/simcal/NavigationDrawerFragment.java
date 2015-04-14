@@ -251,8 +251,6 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_example) {
-//            mDateData dateData = ((MainActivity)getActivity()).getCurrentSelectDate();
-//            Toast.makeText(getActivity(),String.format("Selected date - %d",dateData.getDay()) , Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(),AddEventActivity.class);
             getActivity().startActivity(intent);
             return true;

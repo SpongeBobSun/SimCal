@@ -28,23 +28,6 @@ import sun.bob.simcal.persistence.EventSQLUtils;
 /**
  * Created by sunkuan on 15/4/6.
  */
-//public class TimeListView extends ListView {
-//    public TimeListView(Context context) {
-//        super(context);
-//        mTimeData timeData = new mTimeData(context);
-//        TimeAdapter adpter = new TimeAdapter(context, android.R.layout.simple_list_item_1,timeData.getContent());
-//        this.setAdapter(adpter);
-//        this.setDividerHeight(0);
-////        initHeight();
-//    }
-//
-//    public void initHeight(){
-//        DisplayMetrics dm;
-//        dm = getContext().getResources().getDisplayMetrics();
-//        this.getLayoutParams().height = 3*((dm.widthPixels - 10)/7);
-////        this.setMinimumHeight(dm.widthPixels-10 / 7);
-//    }
-//}
 
 public class TimeListView extends LinearLayout {
     private ArrayList<mEventBean> eventsOfDay;
@@ -95,7 +78,8 @@ public class TimeListView extends LinearLayout {
             linearLayout = (LinearLayout) this.getChildAt(indexhour).findViewById(R.id.id_event_container);
             for(int count = 0; count < linearLayout.getChildCount();count++){
                 eventView = linearLayout.getChildAt(count);
-                if((eventView.getTag()).equals(String.valueOf(eventBean.get_id()))){
+//                if((eventView.getTag()).equals(String.valueOf(eventBean.get_id()))){
+                  if(Integer.valueOf((String) eventView.getTag()).intValue() == eventBean.get_id()){
                     addFlag = false;
                     break;
                 }
@@ -119,7 +103,6 @@ public class TimeListView extends LinearLayout {
             linearLayout.addView(addItem);
             addItem.setTag(String.valueOf(eventBean.get_id()));
         }
-//        this.invalidate();
 
     }
     public void loadEvent(int year, int month, int day){
