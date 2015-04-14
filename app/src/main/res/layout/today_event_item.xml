@@ -24,14 +24,18 @@
                 android:layout_weight="1.0"
                 android:text="00:00"
                 android:textSize="20dp"
-                android:gravity="bottom|center"/>
+                android:gravity="bottom|center"
+                android:textColor="@color/whitesmoke"
+                android:id="@+id/id_event_item_start_time"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:text="00:00"
+                android:textColor="@color/whitesmoke"
                 android:textSize="20dp"
-                android:gravity="top|center"/>
+                android:gravity="top|center"
+                android:id="@+id/id_event_item_end_time"/>
         </LinearLayout>
         <View
             android:layout_width="1dp"
@@ -44,5 +48,6 @@
         android:layout_height="match_parent"
         android:textSize="40dp"
         android:gravity="left|center_vertical"
-        android:text="Event Title"/>
+        android:text="Event Title"
+        android:id="@+id/id_event_item_title"/>
 </LinearLayout>

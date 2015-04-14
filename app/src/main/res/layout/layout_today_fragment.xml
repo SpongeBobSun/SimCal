@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/id_today_fragment_list"
-    android:padding="0px">
-</ListView>
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="80dp"
+            android:layout_weight="1.0"
+            android:text="2015-04-14"
+            android:gravity="center_vertical|left"
+            android:textSize="50dp"
+            android:id="@+id/id_text_view_list_title"/>
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:id="@+id/id_today_fragment_list"
+        android:padding="0px">
+    </ListView>
+</LinearLayout>

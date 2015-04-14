@@ -35,17 +35,20 @@ public class TodayEventAdapter extends ArrayAdapter {
             retView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.today_event_item, null);
             holder = new ViewHolder();
             retView.setTag(holder);
-//            holder.startTimeTextView = retView.findViewById();
-//            holder.endTimeTextView = retView.findViewById();
+            holder.startTimeTextView = (TextView) retView.findViewById(R.id.id_event_item_start_time);
+            holder.endTimeTextView = (TextView) retView.findViewById(R.id.id_event_item_end_time);
+            holder.titleView = (TextView) retView.findViewById(R.id.id_event_item_title);
         }else{
             holder = (ViewHolder)retView.getTag();
         }
-        Toast.makeText(getContext(),""+bean.getYear()+bean.getMonth()+bean.getDay()+bean.getTitle(),Toast.LENGTH_LONG).show();
-
+        holder.startTimeTextView.setText(bean.getHour()+":"+bean.getMinute());
+        holder.endTimeTextView.setText(bean.getHour()+":"+bean.getMinute());
+        holder.titleView.setText(bean.getTitle());
         return retView;
     }
     class ViewHolder{
         public TextView startTimeTextView;
         public TextView endTimeTextView;
+        public TextView titleView;
     }
 }

@@ -116,8 +116,9 @@ public class EventSQLUtils {
                                                      String.valueOf(mm),
                                                      String.valueOf(dd)},
                                         null, null, null);
-        mEventBean newBean = new mEventBean();
+        mEventBean newBean = null;
         while (cursor.moveToNext()) {
+            newBean = new mEventBean();
             newBean.set_id(cursor.getInt(cursor.getColumnIndex("_id")));
             newBean.setDay(dd);
             newBean.setMonth(mm);
@@ -142,8 +143,9 @@ public class EventSQLUtils {
                 new String[]{String.valueOf(ccyy),
                         String.valueOf(mm)},
                 null, null, null);
-        mEventBean newBean = new mEventBean();
+        mEventBean newBean = null;
         while (cursor.moveToNext()) {
+            newBean = new mEventBean();
             newBean.set_id(cursor.getInt(cursor.getColumnIndex("_id")));
             newBean.setDay(cursor.getInt(cursor.getColumnIndex("dd")));
             newBean.setMonth(mm);

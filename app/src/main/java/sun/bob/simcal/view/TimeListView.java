@@ -5,18 +5,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Canvas;
-import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 
 import sun.bob.simcal.EditEventActivity;
@@ -76,18 +70,17 @@ public class TimeListView extends LinearLayout {
             eventBean = (mEventBean) i.next();
             indexhour = eventBean.getHour();
             linearLayout = (LinearLayout) this.getChildAt(indexhour).findViewById(R.id.id_event_container);
-            for(int count = 0; count < linearLayout.getChildCount();count++){
-                eventView = linearLayout.getChildAt(count);
-//                if((eventView.getTag()).equals(String.valueOf(eventBean.get_id()))){
-                  if(Integer.valueOf((String) eventView.getTag()).intValue() == eventBean.get_id()){
-                    addFlag = false;
-                    break;
-                }
-                addFlag = true;
-            }
-            if(!addFlag){
-                continue;
-            }
+//            for(int count = 0; count < linearLayout.getChildCount();count++){
+//                eventView = linearLayout.getChildAt(count);
+//                  if(Integer.valueOf((String) eventView.getTag()).intValue() == eventBean.get_id()){
+//                    addFlag = false;
+//                    break;
+//                }
+//                addFlag = true;
+//            }
+//            if(!addFlag){
+//                continue;
+//            }
             /**
              * Notice:
              *          Must pass a parent layout to the inflater.

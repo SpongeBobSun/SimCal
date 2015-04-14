@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import sun.bob.simcal.model.mEventBean;
 import sun.bob.simcal.persistence.EventSQLUtils;
@@ -63,6 +64,14 @@ public class EditEventActivity extends AddEventActivity {
                     startDD = data.getStringExtra("DD");
                     startHH = data.getStringExtra("HH");
                     startTT = data.getStringExtra("TT");
+                    TextView startDateTextView = (TextView)findViewById(R.id.id_date_picker_start);
+                    TextView startTimeTextView = (TextView)findViewById(R.id.id_time_picker_start);
+                    startDateTextView.setText(startCCYY+"-"+startMM+"-"+startDD);
+                    startTimeTextView.setText(startHH+":"+startTT);
+                    TextView endDateTextView = (TextView)findViewById(R.id.id_date_picker_end);
+                    TextView endTimeTextView = (TextView)findViewById(R.id.id_time_picker_end);
+                    endDateTextView.setText(endCCYY+"-"+endMM+"-"+endDD);
+                    endTimeTextView.setText(String.valueOf(Integer.valueOf(endHH)+2)+":"+endTT);
                 }else{
                     return;
                 }
@@ -76,6 +85,10 @@ public class EditEventActivity extends AddEventActivity {
                     endDD = data.getStringExtra("DD");
                     endHH = data.getStringExtra("HH");
                     endTT = data.getStringExtra("TT");
+                    TextView endDateTextView = (TextView)findViewById(R.id.id_date_picker_end);
+                    TextView endTimeTextView = (TextView)findViewById(R.id.id_time_picker_end);
+                    endDateTextView.setText(endCCYY+"-"+endMM+"-"+endDD);
+                    endTimeTextView.setText(endHH+":"+endTT);
                 }else{
                     return;
                 }
