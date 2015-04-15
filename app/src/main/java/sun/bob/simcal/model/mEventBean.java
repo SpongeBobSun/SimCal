@@ -12,6 +12,7 @@ public class mEventBean {
     private String title;
     private String detail;
     private int _id;
+    private int status;
 
     public int getYear() {
         return year;
@@ -75,5 +76,13 @@ public class mEventBean {
 
     public void set_id(int _id) {
         this._id = _id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

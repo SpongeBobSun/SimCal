@@ -63,5 +63,14 @@ public class AddEventFragment extends Fragment {
                 getActivity().startActivityForResult(intent, 1);
             }
         });
+        final LinearLayout container = (LinearLayout) v.findViewById(R.id.id_add_event_layout);
+        LinearLayout more = (LinearLayout) v.findViewById(R.id.id_linearlayout_more);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+                container.addView(getActivity().getLayoutInflater().inflate(R.layout.event_bean_more,null));
+            }
+        });
     }
 }

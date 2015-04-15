@@ -84,6 +84,7 @@ public class EventSQLUtils {
         values.put("minute",eventBean.getMinute());
         values.put("title",eventBean.getTitle());
         values.put("detail",eventBean.getDetail());
+        values.put("status",eventBean.getStatus());
         database.insert("events",null,values);
         closeSQL();
     }
@@ -102,6 +103,7 @@ public class EventSQLUtils {
         values.put("minute",eventBean.getMinute());
         values.put("title",eventBean.getTitle());
         values.put("detail",eventBean.getDetail());
+        values.put("status",eventBean.getDetail());
         database.update("events",values,"_id=?",new String[]{String.valueOf(eventBean.get_id())});
         closeSQL();
     }
@@ -110,7 +112,7 @@ public class EventSQLUtils {
         ArrayList<mEventBean> ret = new ArrayList<>();
 
         Cursor cursor = database.query("events",
-                                        new String[]{"_id","title","detail","hh","minute"},
+                                        new String[]{"_id","title","detail","hh","minute","status"},
                                         "ccyy=? and mm=? and dd=?",
                                         new String[]{String.valueOf(ccyy),
                                                      String.valueOf(mm),
@@ -127,6 +129,7 @@ public class EventSQLUtils {
             newBean.setMinute(cursor.getInt(cursor.getColumnIndex("minute")));
             newBean.setTitle(cursor.getString(cursor.getColumnIndex("title")));
             newBean.setDetail(cursor.getString(cursor.getColumnIndex("detail")));
+            newBean.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
             ret.add(newBean);
         }
         cursor.close();
@@ -138,7 +141,7 @@ public class EventSQLUtils {
         ArrayList<mEventBean> ret = new ArrayList<>();
 
         Cursor cursor = database.query("events",
-                new String[]{"_id","title","detail","hh","minute",},
+                new String[]{"_id","title","detail","hh","minute","status"},
                 "ccyy=? and mm=?",
                 new String[]{String.valueOf(ccyy),
                         String.valueOf(mm)},
@@ -154,6 +157,7 @@ public class EventSQLUtils {
             newBean.setMinute(cursor.getInt(cursor.getColumnIndex("minute")));
             newBean.setTitle(cursor.getString(cursor.getColumnIndex("title")));
             newBean.setDetail(cursor.getString(cursor.getColumnIndex("detail")));
+            newBean.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
             ret.add(newBean);
         }
         cursor.close();
@@ -164,7 +168,7 @@ public class EventSQLUtils {
         mEventBean ret = new mEventBean();
         openSQL();
         Cursor cursor = database.query("events",
-                                       new String[]{"_id","title","detail","hh","minute","ccyy","mm","dd"}
+                                       new String[]{"_id","title","detail","hh","minute","ccyy","mm","dd","status"}
                                         ,null,null,null,null,null);
         if(cursor.getCount() == 0){
             return null;
@@ -178,6 +182,7 @@ public class EventSQLUtils {
             ret.setMinute(cursor.getInt(cursor.getColumnIndex("minute")));
             ret.setTitle(cursor.getString(cursor.getColumnIndex("title")));
             ret.setDetail(cursor.getString(cursor.getColumnIndex("detail")));
+            ret.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
         }
         closeSQL();
         return ret;

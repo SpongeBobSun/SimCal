@@ -41,8 +41,8 @@ public class TodayEventAdapter extends ArrayAdapter {
         }else{
             holder = (ViewHolder)retView.getTag();
         }
-        holder.startTimeTextView.setText(bean.getHour()+":"+bean.getMinute());
-        holder.endTimeTextView.setText(bean.getHour()+":"+bean.getMinute());
+        holder.startTimeTextView.setText(String.format("%02d:%02d",bean.getHour(),bean.getMinute()));
+        holder.endTimeTextView.setText(String.format("%02d:%02d",bean.getHour(),bean.getMinute()));
         holder.titleView.setText(bean.getTitle());
         return retView;
     }

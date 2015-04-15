@@ -64,9 +64,11 @@ public class MainActivity extends ActionBarActivity
         switch (position){
             case 0:
                 fragmentManager.beginTransaction().show(mainFragment).hide(todayFragment).hide(todoFragment).commit();
+
                 break;
             case 1:
                 fragmentManager.beginTransaction().show(todayFragment).hide(mainFragment).hide(todoFragment).commit();
+                todayFragment.notifyDataSetChanged();
                 break;
             case 2:
                 fragmentManager.beginTransaction().show(todoFragment).hide(mainFragment).hide(todayFragment).commit();

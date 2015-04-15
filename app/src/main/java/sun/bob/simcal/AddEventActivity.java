@@ -7,7 +7,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -140,6 +142,11 @@ public class AddEventActivity extends ActionBarActivity {
             eventBean.setMinute(Integer.valueOf(startTT));
             eventBean.setTitle(title);
             sqlUtils.addEvent(eventBean);
+            Intent intent = new Intent("intent_date_cell_click");
+            intent.putExtra("CCYY",eventBean.getYear());
+            intent.putExtra("MM",eventBean.getMonth());
+            intent.putExtra("DD",eventBean.getDay());
+            sendBroadcast(intent);
             finish();
             return true;
         }

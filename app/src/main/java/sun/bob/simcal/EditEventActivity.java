@@ -42,6 +42,8 @@ public class EditEventActivity extends AddEventActivity {
         if(detail == null){
             detail = " ";
         }
+        //Todo
+        //This Activity need a new Fragment!!!
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
