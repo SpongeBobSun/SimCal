@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-26cd3cd4b2fa25e45768c92ce77399fd695c9206.jar" />
+        <dex dex="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-d5ab7bc11cac71094c954e9af2c47c1f675bdc72.jar" />
     </item>
     <item
-        jar="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/pre-dexed/debug/classes-fcb59a926ae88aee26506d4df64b5966ad31a271.jar" />
-    </item>
-    <item
-        jar="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/pre-dexed/debug/classes-c4c2ff502c523d93575fe5d376ef0ea13d9f262e.jar" />
+        <dex dex="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\pre-dexed\debug\classes-edd320307fd8e0e7c6aeca30ec41a4403b98da98.jar" />
     </item>
     <item
-        jar="/Applications/Android SDK/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="C:\Program Files\adt-bundle-windows-x86-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/Users/sunkuan/AndroidStudioProjects/SimCal/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-08e73b59f393b4634aabd4eb72f3bdddbf2ff303.jar" />
+        <dex dex="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-fdecea41a07a2ab670b861c967f2e95484c921a1.jar" />
+    </item>
+    <item
+        jar="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\bob.sun\AndroidStudioProjects\SimCal\app\build\intermediates\pre-dexed\debug\classes-26c50aaec2b87906ed32b8f83ac04f9009d06aa2.jar" />
     </item>
 
 </items>
