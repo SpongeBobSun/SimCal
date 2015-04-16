@@ -29,8 +29,9 @@
         <activity android:name=".view.TimePickerActivity"
             android:theme="@style/Dialog">
         </activity>
+        <activity android:name=".NotificationActivity"
+            android:theme="@style/Dialog"/>
         <service android:name=".background.EventService">
-
         </service>
         <receiver android:name=".background.StartupReceiver">
             <intent-filter>

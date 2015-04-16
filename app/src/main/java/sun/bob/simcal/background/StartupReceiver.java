@@ -15,6 +15,6 @@ public class StartupReceiver extends BroadcastReceiver{
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent eventIntent = new Intent(context,EventService.class);
         PendingIntent pendingIntent = PendingIntent.getService(context,0,eventIntent,0);
-        alarmManager.setRepeating(AlarmManager.RTC,System.currentTimeMillis(),1000*10,pendingIntent);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,System.currentTimeMillis(),1000*60,pendingIntent);
     }
 }

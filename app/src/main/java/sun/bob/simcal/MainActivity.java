@@ -45,7 +45,6 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         Intent serviceIntent = new Intent();
         serviceIntent.setAction("sun.bob.simcal.pull_service");
-        sendBroadcast(serviceIntent);
     }
 
     private void initFragments(){
