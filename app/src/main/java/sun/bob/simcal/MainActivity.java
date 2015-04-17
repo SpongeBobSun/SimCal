@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.view.MainFragment;
+import sun.bob.simcal.view.SettingFragment;
 import sun.bob.simcal.view.TodayFragment;
 import sun.bob.simcal.view.TodoFragment;
 
@@ -19,7 +20,7 @@ public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private MainFragment mainFragment;
     private TodayFragment todayFragment;
-    private TodoFragment todoFragment;
+    private SettingFragment settingFragment;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -45,36 +46,37 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         Intent serviceIntent = new Intent();
         serviceIntent.setAction("sun.bob.simcal.pull_service");
+        sendBroadcast(serviceIntent);
     }
 
     private void initFragments(){
         FragmentManager fm = getSupportFragmentManager();
         mainFragment = new MainFragment();
         todayFragment = new TodayFragment();
-        todoFragment = new TodoFragment();
+        settingFragment = new SettingFragment();
         fm.beginTransaction().add(R.id.container,mainFragment,"mainFragment").commit();
         fm.beginTransaction().add(R.id.container,todayFragment,"todayFragment").commit();
-        fm.beginTransaction().add(R.id.container,todoFragment,"todoFragment").commit();
+        fm.beginTransaction().add(R.id.container,settingFragment,"todoFragment").commit();
         fm.beginTransaction().hide(todayFragment).commit();
-        fm.beginTransaction().hide(todoFragment).commit();
+        fm.beginTransaction().hide(settingFragment).commit();
     }
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        if(mainFragment == null | todayFragment == null | todoFragment == null){
+        if(mainFragment == null | todayFragment == null | settingFragment == null){
             initFragments();
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (position){
             case 0:
-                fragmentManager.beginTransaction().show(mainFragment).hide(todayFragment).hide(todoFragment).commit();
+                fragmentManager.beginTransaction().show(mainFragment).hide(todayFragment).hide(settingFragment).commit();
 
                 break;
             case 1:
-                fragmentManager.beginTransaction().show(todayFragment).hide(mainFragment).hide(todoFragment).commit();
+                fragmentManager.beginTransaction().show(todayFragment).hide(mainFragment).hide(settingFragment).commit();
                 todayFragment.notifyDataSetChanged();
                 break;
             case 2:
-                fragmentManager.beginTransaction().show(todoFragment).hide(mainFragment).hide(todayFragment).commit();
+                fragmentManager.beginTransaction().show(settingFragment).hide(mainFragment).hide(todayFragment).commit();
                 break;
             default:
                 break;

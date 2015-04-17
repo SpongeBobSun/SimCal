@@ -30,7 +30,6 @@ public class mCalendarViewPager extends ViewPager {
         this.setCurrentItem(500);
         this.setYear(mMonthData.getCurrentYear());
         this.setMonth(mMonthData.getCurrentMonth());
-//        this.setOnPageChangeListener(new CalendarScrollListener());
     }
     public mCalendarViewPager(Context context, AttributeSet attr){
         super(context);
@@ -39,7 +38,6 @@ public class mCalendarViewPager extends ViewPager {
         this.setCurrentItem(500);
         this.setYear(mMonthData.getCurrentYear());
         this.setMonth(mMonthData.getCurrentMonth());
-//        this.setOnPageChangeListener(new CalendarScrollListener());
     }
 
 

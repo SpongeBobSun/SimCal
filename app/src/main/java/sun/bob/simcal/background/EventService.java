@@ -22,21 +22,22 @@ import sun.bob.simcal.persistence.EventSQLUtils;
 public class EventService extends IntentService {
 
     public EventService() {
-        super("start_event_service");
+        super("sun.bob.simcal.pull_service");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-//        Log.i("SimCal","Back ground service checking...");
+        Log.i("SimCal","Back ground service checking...");
         Calendar calendar = Calendar.getInstance();
-        int currentHour = calendar.get(Calendar.HOUR);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
         int currentMin = calendar.get(Calendar.MINUTE);
         ArrayList<mEventBean> eventBeans = EventSQLUtils.getStaticInstance(getApplicationContext()).getDayEvent(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.DAY_OF_MONTH));
         for(int i = 0;i<eventBeans.size();i++){
-            if((currentHour == eventBeans.get(i).getHour())||(currentMin == eventBeans.get(i).getMinute())){
+            if((currentHour == eventBeans.get(i).getHour())&&(currentMin == eventBeans.get(i).getMinute())){
                 sendNotification(eventBeans.get(i));
             }
         }
+        eventBeans.clear();
     }
     private void sendNotification(mEventBean bean){
         NotificationManager nm = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
@@ -49,6 +50,7 @@ public class EventService extends IntentService {
         nm.notify(100,notification);
         Intent popupIntent = new Intent(getApplicationContext(), NotificationActivity.class);
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        popupIntent.putExtra("eventID",bean.get_id());
         this.startActivity(popupIntent);
     }
 

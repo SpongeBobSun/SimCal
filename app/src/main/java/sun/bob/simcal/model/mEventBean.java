@@ -27,13 +27,20 @@ public class mEventBean {
     }
 
     public void setMonth(int month) {
-        this.month = month;
+        if(month < 13) {
+            this.month = month;
+        }else{
+            this.month = (month - 12);
+            this.setYear(this.year+1);
+        }
     }
 
     public int getDay() {
         return day;
     }
 
+    //Todo
+    //This function cause a bug when setHour is called with an improper argument.
     public void setDay(int day) {
         this.day = day;
     }
@@ -43,7 +50,12 @@ public class mEventBean {
     }
 
     public void setHour(int hour) {
-        this.hour = hour;
+        if(hour < 24){
+            this.hour = hour;
+        }else{
+            this.hour = (hour - 24);
+            this.setDay(this.day+1);
+        }
     }
 
     public int getMinute() {
@@ -51,7 +63,12 @@ public class mEventBean {
     }
 
     public void setMinute(int minute) {
-        this.minute = minute;
+        if(minute < 60) {
+            this.minute = minute;
+        }else{
+            this.minute = minute - 60;
+            this.setHour(this.getHour()+1);
+        }
     }
 
     public String getTitle() {
