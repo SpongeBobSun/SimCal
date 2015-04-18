@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sun.bob.simcal" >
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -31,6 +32,10 @@
         </activity>
         <activity android:name=".NotificationActivity"
             android:theme="@style/Dialog"/>
+        <activity android:name=".AboutActivity"
+                  android:theme="@style/AppTheme">
+                <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+        </activity>
         <service android:name=".background.EventService">
         </service>
         <receiver android:name=".background.StartupReceiver">
