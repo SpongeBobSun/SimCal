@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import sun.bob.simcal.R;
 import sun.bob.simcal.controller.mCalendarAdapter;
@@ -20,11 +21,13 @@ import sun.bob.simcal.model.mMonthData;
  */
 public class mCalendarViewFragment extends Fragment {
 
+    private String[] titles = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
     private CalendarViewUp calendarViewUp;
     private CalendarViewDown calendarViewDown;
     private TimeListView timeListView;
     private ScrollView timeContainer;
     private mMonthData monthData;
+    private LinearLayout titleContainer;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +46,9 @@ public class mCalendarViewFragment extends Fragment {
         calendarViewDown = new CalendarViewDown(getActivity());
         calendarViewDown.setPadding(0,0,0,0);
 
+        titleContainer = (LinearLayout) inflater.inflate(R.layout.title_cell,parent,false);
+        retView.addView(titleContainer,0);
+
         timeContainer = new ScrollView(getActivity());
         timeListView = new TimeListView(getActivity());
         timeListView.setPadding(0,0,0,0);
@@ -54,12 +60,12 @@ public class mCalendarViewFragment extends Fragment {
         calendarViewDown.setMonthData(monthData);
         timeListView.loadEvent(monthData.getYear(),monthData.getMonth(),monthData.getCenterDay());
         LinearLayout.LayoutParams paramsUp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        retView.addView(calendarViewUp,0,paramsUp);
+        retView.addView(calendarViewUp,1,paramsUp);
         LinearLayout.LayoutParams paramsMiddle = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,0,1f);
-        retView.addView(timeContainer,1,paramsMiddle);
+        retView.addView(timeContainer,2,paramsMiddle);
 
         LinearLayout.LayoutParams paramsDown = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        retView.addView(calendarViewDown,2,paramsDown);
+        retView.addView(calendarViewDown,3,paramsDown);
         calendarViewUp.setSelector(R.drawable.selector_null);
         calendarViewDown.setSelector(R.drawable.selector_null);
 

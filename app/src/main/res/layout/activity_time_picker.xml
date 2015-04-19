@@ -28,8 +28,7 @@
             android:layout_weight="1.0"
             android:text="Cancle"
             android:textSize="20dp"
-            android:textColor="@color/blue"
-            android:background="@null"
+            android:textColor="@color/black"
             android:id="@+id/id_date_picker_cancle_button"/>
     </LinearLayout>
 

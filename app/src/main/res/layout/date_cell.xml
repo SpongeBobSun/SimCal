@@ -19,12 +19,13 @@
             android:gravity="center"
             />
         <View
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0px"
             android:layout_weight="1.0"
             android:id="@+id/id_date_cell_mark_bar"
             android:layout_toRightOf="@id/id_date_cell_textview"
             android:layout_margin="0px"
+            android:background="@drawable/background_circle"
             />
     </LinearLayout>
 

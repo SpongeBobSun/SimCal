@@ -184,6 +184,7 @@ public class EventSQLUtils {
             ret.setDetail(cursor.getString(cursor.getColumnIndex("detail")));
             ret.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
         }
+        cursor.close();
         closeSQL();
         return ret;
     }

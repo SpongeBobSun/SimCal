@@ -40,7 +40,6 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-//        ArrayList<mDateData> list = mMonthData.getInstance(getContext()).getArray();_
         ArrayList<mDateData> list = dateDatas;
         View retView = convertView;
 		ViewHolder holder;
