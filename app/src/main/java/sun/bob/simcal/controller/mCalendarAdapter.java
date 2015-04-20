@@ -53,15 +53,7 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
 			holder = (ViewHolder) retView.getTag();
 		}
         mDateData dateData = list.get(position);
-//        if(position < 7){
-//            textView.setText(((mTitleData)dateData).getTitle());
-//            textView.setTextSize(cellSize / 4);
-//            textView.setBackgroundColor(getContext().getResources().getColor(R.color.lightblue));
-//            textView.setWidth(cellSize);
-//            LinearLayout linearLayout = (LinearLayout)retView.findViewById(R.id.id_date_cell_text_container);
-//            linearLayout.removeViewAt(1);
-//            return retView;
-//        }
+
         holder.cellTextView.setWidth(cellSize);
         holder.cellTextView.setHeight(cellSize);
         if(dateData.isBlank()){
