@@ -2,6 +2,7 @@ package sun.bob.simcal.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +47,9 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
 		if(retView == null){
 			retView = ((Activity)getContext()).getLayoutInflater().inflate(R.layout.date_cell,null);
 			holder = new ViewHolder();
-			retView.setTag(holder);
             holder.cellTextView = (TextView)retView.findViewById(R.id.id_date_cell_textview);
             holder.cellMarkBar = retView.findViewById(R.id.id_date_cell_mark_bar);
+            retView.setTag(holder);
 		}else{
 			holder = (ViewHolder) retView.getTag();
 		}
@@ -67,16 +68,17 @@ public class mCalendarAdapter extends ArrayAdapter<mDateData> {
         }else{
             holder.cellTextView.setText(String.format("%d",dateData.getDay()));
         }
-        if(dateData.getTextSize() == 1) {
-            holder.cellTextView.setTextSize(cellSize / 3);
-        }
-        if(dateData.getTextSize() == 0){
-            holder.cellTextView.setTextSize(cellSize / 5);
-            holder.cellTextView.setLayoutParams(cellParams);
-        }
+//        if(dateData.getTextSize() == 1) {
+//            holder.cellTextView.setTextSize(cellSize / 3);
+//        }
+//        if(dateData.getTextSize() == 0){
+//            holder.cellTextView.setTextSize(cellSize / 5);
+//            holder.cellTextView.setLayoutParams(cellParams);
+//        }
         holder.cellTextView.setTextColor(dateData.getTextColor());
         if(dateData.isMarked()){
-            holder.cellMarkBar.setBackgroundColor(dateData.getMarkColor());
+//            holder.cellMarkBar.setBackgroundColor(dateData.getMarkColor());
+            holder.cellTextView.setTextColor(Color.BLUE);
         }
         return retView;
     }

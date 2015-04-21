@@ -25,10 +25,10 @@ public class CalendarViewUp extends GridView {
     public void setMonthData(mMonthData monthData){
         this.monthData = monthData;
         ArrayList<mEventBean> eventDays = EventSQLUtils.getStaticInstance(getContext()).getMonthEvent(monthData.getYear(),monthData.getMonth()+1);
-        adapter = new mCalendarAdapter(getContext(),android.R.layout.simple_list_item_1,monthData.getArrayUp(monthData.getCenterDay()));
         for(int i = 0; i < eventDays.size();i++){
             markDay(eventDays.get(i).getDay(),getResources().getColor(android.support.v7.appcompat.R.color.accent_material_light),0);
         }
+        adapter = new mCalendarAdapter(getContext(),android.R.layout.simple_list_item_1,monthData.getArrayUp(monthData.getCenterDay()));
         this.setAdapter(adapter);
         this.setNumColumns(7);
     }

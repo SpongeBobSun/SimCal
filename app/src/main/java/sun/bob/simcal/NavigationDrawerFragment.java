@@ -105,9 +105,9 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 new String[]{
-                        "Calendar",
-                        "Today",
-                        "Settings",
+                        getResources().getString(R.string.drawer_titile_calendar),
+                        getResources().getString(R.string.drawer_titile_today),
+                        getResources().getString(R.string.drawer_titile_settings),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;

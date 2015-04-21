@@ -2,12 +2,24 @@
 <resources>
 
     <string name="app_name">SimCal</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <!--<string name="title_section1">Section 1</string>-->
+    <!--<string name="title_section2">Section 2</string>-->
+    <!--<string name="title_section3">Section 3</string>-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
+    <!--<string name="action_example">Example action</string>-->
     <string name="action_settings">Settings</string>
-
+    <string name="drawer_titile_calendar">Calendar</string>
+    <string name="drawer_titile_today">Today</string>
+    <string name="drawer_titile_settings">Settings</string>
+    <string name="button_done">Done</string>
+    <string name="button_new">New</string>
+    <string name="text_i_want_to">I want to...</string>
+    <string name="text_all_day">All Day?</string>
+    <string name="text_more">More...</string>
+    <string name="button_view">View</string>
+    <string name="button_later">Later</string>
+    <string name="button_dismiss">Dismiss</string>
+    <string name="button_ok">Ok</string>
+    <string name="button_cancel">Cancel</string>
 </resources>

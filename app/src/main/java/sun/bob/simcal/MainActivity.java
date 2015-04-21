@@ -13,7 +13,6 @@ import sun.bob.simcal.model.mDateData;
 import sun.bob.simcal.view.MainFragment;
 import sun.bob.simcal.view.SettingFragment;
 import sun.bob.simcal.view.TodayFragment;
-import sun.bob.simcal.view.TodoFragment;
 
 
 public class MainActivity extends ActionBarActivity

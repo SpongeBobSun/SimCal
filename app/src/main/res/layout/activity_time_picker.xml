@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1.0"
-            android:text="Ok"
+            android:text="@string/button_ok"
             android:textSize="20dp"
             android:textColor="@color/black"
             android:background="@null"
@@ -26,9 +26,10 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1.0"
-            android:text="Cancle"
+            android:text="@string/button_cancel"
             android:textSize="20dp"
             android:textColor="@color/black"
+            android:background="@null"
             android:id="@+id/id_date_picker_cancle_button"/>
     </LinearLayout>
 

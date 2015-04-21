@@ -13,7 +13,7 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textSize="30dp"
-        android:text="I want to..."
+        android:text="@string/text_i_want_to"
         android:background="@null"
         android:layout_marginBottom="5dp"
         android:id="@+id/id_edit_text_event_title"/>
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="All day?"/>
+                android:text="@string/text_all_day"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -94,7 +94,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:background="@drawable/date_selector_1"
-            android:text="More..."
+            android:text="@string/text_more"
             android:textColor="@color/lightblue"/>
     </LinearLayout>
 </LinearLayout>

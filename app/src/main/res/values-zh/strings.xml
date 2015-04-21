@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SimCal</string>
+    <string name="action_settings">设置</string>
+    <string name="navigation_drawer_close">打开导航</string>
+    <string name="navigation_drawer_open">关闭导航</string>
+    <string name="drawer_titile_calendar">日历</string>
+    <string name="drawer_titile_settings">设置</string>
+    <string name="drawer_titile_today">今天</string>
+    <string name="button_done">完成</string>
+    <string name="button_new">新建</string>
+    <string name="text_i_want_to">我要...</string>
+    <string name="text_all_day">全天？</string>
+    <string name="text_more">更多...</string>
+    <string name="button_dismiss">朕知道了</string>
+    <string name="button_later">稍后</string>
+    <string name="button_view">查看</string>
+    <string name="button_ok">确认</string>
+    <string name="button_cancel">取消</string>
+</resources>
