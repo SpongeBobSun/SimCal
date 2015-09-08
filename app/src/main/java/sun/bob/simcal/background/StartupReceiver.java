@@ -12,9 +12,8 @@ import android.content.Intent;
 public class StartupReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent eventIntent = new Intent(context,EventService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(context,0,eventIntent,0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),1000*50,pendingIntent);
+        eventIntent.putExtra("CMD",EventService.CMD_PULL);
+        context.startService(eventIntent);
     }
 }
