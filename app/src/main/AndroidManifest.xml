@@ -36,7 +36,8 @@
                   android:theme="@style/AppTheme">
                 <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
         </activity>
-        <service android:name=".background.EventService">
+        <service android:name=".background.EventService"
+            android:process=".SimCalService">
         </service>
         <receiver android:name=".background.StartupReceiver">
             <intent-filter>
